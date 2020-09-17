@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 @import './assets/scss/index.scss';
 
 *, *::before, *::after {
   box-sizing: border-box;
+  font-family: var(--font-family-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -11,11 +13,9 @@ body {
   background-color: var(--color-base);
   color: var(--color-black-body);
   display: flex;
-  font-family: Poppins;
+  font-size: var(--font-size-md);
   height: 100vh;
   justify-content: center;
   margin: 0;
   width: 100vw;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }

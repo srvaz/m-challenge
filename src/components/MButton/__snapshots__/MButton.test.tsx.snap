@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MButton should render correctly default 1`] = `
+<DocumentFragment>
+  <button
+    class="m-button m-button--default"
+  >
+    Mock Button
+  </button>
+</DocumentFragment>
+`;
+
+exports[`MButton should render correctly outlined 1`] = `
+<DocumentFragment>
+  <button
+    class="m-button m-button--outlined"
+  >
+    Mock Button
+  </button>
+</DocumentFragment>
+`;
+
+exports[`MButton should render correctly primary 1`] = `
+<DocumentFragment>
+  <button
+    class="m-button m-button--primary"
+  >
+    Mock Button
+  </button>
+</DocumentFragment>
+`;
+
+exports[`MButton should render correctly secondary 1`] = `
+<DocumentFragment>
+  <button
+    class="m-button m-button--secondary"
+  >
+    Mock Button
+  </button>
+</DocumentFragment>
+`;

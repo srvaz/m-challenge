@@ -2,15 +2,35 @@
  * Default theme colors
  */
 
-$THEME_COLORS: (
-  'primary': rgb(49, 130, 237),
+ $PRIMARY_VARIANTS: (
+   'primary': rgb(49, 130, 237),
+   'primary-light': lighten(rgb(49, 130, 237), 8),
+   'primary-light-transparent': rgba(49, 130, 237, 0.14),
+   'primary-dark-transparent': rgba(49, 130, 237, 0.3),
+ );
+
+$SECONDARY_VARIANTS: (
   'secondary': rgb(242, 153, 74),
+  'secondary-light': lighten(rgb(242, 153, 74), 8),
+  'secondary-light-transparent': rgba(242, 153, 74, 0.14),
+  'secondary-dark-transparent': rgba(242, 153, 74, 0.3),
+);
+
+$BASE_COLORS: (
   'base': rgb(229, 229, 229),
   'contrast': rgb(255, 255, 255),
   'black': rgb(0, 0, 0),
+);
+
+$FONT_COLORS: (
   'black-body': rgba(0, 0, 0, 0.7),
   'black-medium': rgba(0, 0, 0, 0.48),
   'black-light': rgba(0, 0, 0, 0.35),
+);
+
+$THEME_COLORS: map-merge(
+  map-merge($PRIMARY_VARIANTS, $SECONDARY_VARIANTS),
+  map-merge($BASE_COLORS, $FONT_COLORS)
 );
 
 :root {
