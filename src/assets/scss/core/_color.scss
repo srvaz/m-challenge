@@ -19,10 +19,10 @@ $SECONDARY_VARIANTS: (
 $BASE_COLORS: (
   'base': rgb(229, 229, 229),
   'contrast': rgb(255, 255, 255),
-  'black': rgb(0, 0, 0),
-);
+  );
 
-$FONT_COLORS: (
+  $FONT_COLORS: (
+  'black': rgb(0, 0, 0),
   'black-body': rgba(0, 0, 0, 0.7),
   'black-medium': rgba(0, 0, 0, 0.48),
   'black-light': rgba(0, 0, 0, 0.35),
