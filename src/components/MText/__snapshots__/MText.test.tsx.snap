@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MText should render correctly default 1`] = `
+<DocumentFragment>
+  <p
+    class="m-text"
+  >
+    This is a mock text
+  </p>
+</DocumentFragment>
+`;
+
+exports[`MText should render correctly subtitle 1`] = `
+<DocumentFragment>
+  <p
+    class="m-text m-text--subtitle"
+  >
+    This is a mock text
+  </p>
+</DocumentFragment>
+`;
+
+exports[`MText should render correctly title 1`] = `
+<DocumentFragment>
+  <p
+    class="m-text m-text--title"
+  >
+    This is a mock text
+  </p>
+</DocumentFragment>
+`;
+
+exports[`MText should render correctly with custom tag 1`] = `
+<DocumentFragment>
+  <h2
+    class="m-text m-text--subtitle"
+  >
+    This is a mock text
+  </h2>
+</DocumentFragment>
+`;

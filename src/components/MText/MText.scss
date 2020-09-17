@@ -1,0 +1,17 @@
+.m-text {
+  color: var(--color-black-body);
+  font-weight: 500;
+  margin: 0;
+
+  &.m-text {
+    &--title {
+      color: var(--color-black);
+      font-size: 16px;
+    }
+
+    &--subtitle {
+      color: var(--color-black-medium);
+      font-size: 16px;
+    }
+  }
+}
