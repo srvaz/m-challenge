@@ -1,0 +1,19 @@
+/*
+ * Default theme spacing
+ */
+
+$BASE_SPACING: 8px;
+
+$spacings: (
+  'sm': $BASE_SPACING,
+  'md': $BASE_SPACING * 2,
+  'st': $BASE_SPACING * 3,
+  'lg': $BASE_SPACING * 4,
+  'xl': $BASE_SPACING * 5,
+);
+
+:root {
+  @each $spacing, $val in $spacings {
+    --space-#{$spacing}: #{$val};
+  }
+}
