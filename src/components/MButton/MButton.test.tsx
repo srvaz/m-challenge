@@ -2,6 +2,7 @@ import { BUTTON_VARIANTS, MButton } from './index';
 import { fireEvent, render } from '@testing-library/react';
 
 import React from 'react';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 describe('MButton', () => {
   let wrapper: any;
@@ -31,6 +32,12 @@ describe('MButton', () => {
     test('outlined', () => {
       props.variant = BUTTON_VARIANTS.OUTLINED;
       wrapper = render(<MButton {...props}>Mock Button</MButton>);
+      expect(wrapper.asFragment()).toMatchSnapshot();
+    });
+
+    test('icon', () => {
+      props.variant = BUTTON_VARIANTS.DEFAULT;
+      wrapper = render(<MButton {...props} icon={faThumbsUp} >This label should't be visible</MButton>);
       expect(wrapper.asFragment()).toMatchSnapshot();
     });
   })

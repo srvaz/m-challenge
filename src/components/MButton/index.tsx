@@ -2,6 +2,8 @@ import './MButton.scss';
 
 import React, { Component, MouseEvent } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getClassList } from '../../assets/ts/utils';
 
 export enum BUTTON_VARIANTS {
@@ -14,7 +16,7 @@ export enum BUTTON_VARIANTS {
 
 interface props {
   variant?: BUTTON_VARIANTS | null,
-  icon?: boolean,
+  icon?: IconProp,
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -29,11 +31,15 @@ export class MButton extends Component<props> {
         className={getClassList(
           this.baseClassName,
           variant && `${this.baseClassName}--${variant}`,
-          icon && `${this.baseClassName}--${icon}`,
+          icon && `${this.baseClassName}--icon`,
         )}
         onClick={onClick}
       >
-        {children}
+        {
+          icon
+            ? <FontAwesomeIcon icon={icon} size='lg' />
+            : children
+        }
       </button>
     );
   }
