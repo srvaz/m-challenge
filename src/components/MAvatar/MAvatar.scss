@@ -1,0 +1,21 @@
+.m-avatar {
+  align-items: center;
+  background-color: var(--color-primary-light-transparent);
+  border-radius: 50%;
+  display: flex;
+  height: calc(var(--space-sm) * 6);
+  justify-content: center;
+  width: calc(var(--space-sm) * 6);
+
+  .m-avatar__img {
+    border-radius: 50%;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .m-avatar__initials {
+    color: var(--color-primary);
+    font-size: var(--font-size-xl);
+  }
+}
