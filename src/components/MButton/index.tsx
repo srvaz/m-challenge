@@ -1,6 +1,6 @@
 import './MButton.scss';
 
-import React, { Component, MouseEvent } from 'react';
+import React, { Component, HTMLAttributes } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -17,18 +17,18 @@ export enum BUTTON_VARIANTS {
 interface props {
   variant?: BUTTON_VARIANTS | null,
   icon?: IconProp,
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export class MButton extends Component<props> {
+export class MButton extends Component<props & HTMLAttributes<HTMLButtonElement>> {
   baseClassName = 'm-button';
 
   render() {
-    const { variant, icon, children, onClick } = this.props;
+    const { variant, icon, children, onClick, className } = this.props;
 
     return (
       <button
         className={getClassList(
+          className,
           this.baseClassName,
           variant && `${this.baseClassName}--${variant}`,
           icon && `${this.baseClassName}--icon`,
