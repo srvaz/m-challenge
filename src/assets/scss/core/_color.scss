@@ -21,16 +21,17 @@ $BASE_COLORS: (
   'contrast': rgb(255, 255, 255),
   );
 
-  $FONT_COLORS: (
+  $BLACK_COLORS: (
   'black': rgb(0, 0, 0),
   'black-body': rgba(0, 0, 0, 0.7),
   'black-medium': rgba(0, 0, 0, 0.48),
   'black-light': rgba(0, 0, 0, 0.35),
+  'black-shadow': rgba(0, 0, 0, 0.13),
 );
 
 $THEME_COLORS: map-merge(
   map-merge($PRIMARY_VARIANTS, $SECONDARY_VARIANTS),
-  map-merge($BASE_COLORS, $FONT_COLORS)
+  map-merge($BASE_COLORS, $BLACK_COLORS)
 );
 
 :root {
