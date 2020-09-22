@@ -1,0 +1,12 @@
+.m-status {
+  align-items: center;
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: auto 1fr;
+
+  .m-status__badge {
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+  }
+}
