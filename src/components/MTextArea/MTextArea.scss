@@ -1,0 +1,29 @@
+.m-text-area {
+  background-color: var(--color-contrast);
+  border-radius: var(--border-radius);
+  border: var(--border-default);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  position: relative;
+  width: 100%;
+
+  &.m-text-area--active {
+    box-shadow: 0 0 0 3px var(--color-primary-dark-transparent);
+  }
+
+  textarea {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    min-height: 200px;
+    resize: none;
+    width: 100%;
+    padding: var(--space-sm) 0 var(--space-sm) var(--space-md);
+  }
+
+  .emoji-mart {
+    position: absolute;
+    right: var(--space-md);
+    top: calc(42px + var(--space-sm));
+  }
+}
