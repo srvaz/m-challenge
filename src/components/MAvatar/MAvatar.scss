@@ -17,5 +17,6 @@
   .m-avatar__initials {
     color: var(--color-primary);
     font-size: var(--font-size-xl);
+    user-select: none;
   }
 }

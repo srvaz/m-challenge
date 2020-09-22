@@ -1,0 +1,92 @@
+@import '../../assets/scss/constants/screen';
+
+.m-app-bar {
+  align-items: center;
+  background-color: var(--color-contrast);
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr auto;
+  padding: var(--space-md) var(--space-xl);
+  width: 100%;
+
+  @media (min-width: $screen-lg) {
+    gap: var(--space-lg);
+    grid-template-columns: auto 1fr auto;
+    justify-content: space-between;
+  }
+
+  .m-app-bar__logo {
+    display: none;
+
+    @media (min-width: $screen-lg) {
+      display: block;
+      width: 115px;
+    }
+  }
+
+  .m-app-bar__menu-trigger.m-button {
+    left: calc(var(--space-md) * -1);
+    position: relative;
+
+    @media (min-width: $screen-lg) {
+      display: none;
+    }
+  }
+
+  .m-app-bar__menu {
+    position: relative;
+
+    @media (max-width: $screen-lg - 1px) {
+      background-color: var(--color-contrast);
+      box-shadow: 2px 0 4px var(--color-black-shadow);
+      height: 100vh;
+      left: 0;
+      min-width: 200px;
+      padding: var(--space-md);
+      position: absolute;
+      top: 0;
+      transition-duration: var(--animation-duration-normal);
+      transform: translateX(-200px);
+
+      &.m-app-bar__menu--open {
+        transform: translateX(0);
+      }
+    }
+
+    .m-app-bar__menu-list {
+      display: grid;
+      gap: var(--space-sm);
+      list-style: none;
+      padding: 0;
+
+      @media (min-width: $screen-lg) {
+        grid-auto-flow: column;
+        justify-content: start;
+      }
+
+      .m-app-bar__menu-item {
+        padding: var(--space-sm);
+        width: 100%;
+
+        .m-app-bar__menu-link {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .m-app-bar__menu-overlay {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .m-app-bar__user-area {
+    align-items: center;
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: auto 1fr;
+  }
+}
