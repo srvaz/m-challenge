@@ -4,6 +4,7 @@
 *, *::before, *::after {
   box-sizing: border-box;
   font-family: var(--font-family-default);
+  outline: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
