@@ -1,0 +1,15 @@
+.m-link {
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+
+  &:focus, &:active {
+    text-decoration: underline;
+  }
+
+  &.m-link {
+    &--active {
+      text-decoration: underline;
+    }
+  }
+}
