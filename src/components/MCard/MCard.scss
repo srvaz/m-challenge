@@ -1,0 +1,14 @@
+.m-card {
+  background-color: var(--color-contrast);
+  border-radius: var(--border-radius);
+  border: var(--border-default);
+
+  .m-card__title {
+    border-bottom: var(--border-default);
+    padding: var(--space-sm);
+  }
+
+  .m-card__content {
+    padding: var(--space-st);
+  }
+}

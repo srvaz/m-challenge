@@ -1,0 +1,1 @@
+export { MCardDefault as MCard } from './default';
