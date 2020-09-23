@@ -5,9 +5,12 @@ import React, { useState } from 'react';
 
 import { MAppBar } from './components/MAppBar';
 import { MDatePicker } from './components/MDatePicker';
+import { MTimePicker } from './components/MHourPicker';
 
 function App() {
   const [dateValue, onChangeDate] = useState(new Date());
+  const [timeValue, onChangeTime] = useState(new Date());
+
   return (
     <div className="App">
       <MAppBar
@@ -28,6 +31,11 @@ function App() {
       <MDatePicker
         value={dateValue}
         onChange={onChangeDate}
+      />
+
+      <MTimePicker
+        value={timeValue}
+        onChange={onChangeTime}
       />
     </div>
   );
