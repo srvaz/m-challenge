@@ -1,0 +1,42 @@
+.m-time-picker {
+  .react-time-picker {
+    &--open {
+      .react-time-picker__wrapper {
+        box-shadow: 0 0 0 3px var(--color-primary-dark-transparent);
+      }
+    }
+
+    .react-time-picker__wrapper {
+      background-color: var(--color-contrast);
+      border-radius: var(--border-radius);
+      border: var(--border-default);
+      display: grid;
+      gap: var(--space-sm);
+      grid-auto-flow: column;
+      padding: var(--space-sm) var(--space-md);
+
+      .react-time-picker__inputGroup {
+        input {
+          color: var(--color-black-body);
+        }
+      }
+
+      .react-time-picker__clock-button {
+        color: var(--color-black-body);
+        grid-column: 1;
+        padding: 0;
+      }
+
+      .react-time-picker__clear-button {
+        display: none;
+      }
+    }
+
+    .react-time-picker__clock {
+      border: none;
+      border-radius: var(--border-radius);
+      box-shadow: 0 0 4px var(--color-black-shadow);
+      margin-top: var(--space-sm);
+    }
+  }
+}

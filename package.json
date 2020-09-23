@@ -16,8 +16,10 @@
     "emoji-mart": "^3.0.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-date-picker": "^8.0.3",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
+    "react-time-picker": "^4.0.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -42,6 +44,7 @@
     ]
   },
   "devDependencies": {
-    "@types/emoji-mart": "^3.0.2"
+    "@types/emoji-mart": "^3.0.2",
+    "@types/react-calendar": "^3.1.1"
   }
 }
