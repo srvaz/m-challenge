@@ -1,0 +1,71 @@
+@import '../../assets/scss/constants/screen';
+
+.page-scheduling {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-areas:
+    'social-area'
+    'date-area'
+    'text-area'
+    'media-area'
+    'button-area';
+  height: 100%;
+
+  @media(min-width: $screen-lg) {
+    gap: var(--space-xl);
+    grid-template-areas:
+      'social-area date-area preview-area'
+      'text-area text-area preview-area'
+      'media-area media-area preview-area';
+    grid-template-columns: repeat(2, 1fr) 2fr;
+  }
+
+  .page-scheduling__social-network-card {
+    grid-area: social-area;
+  }
+
+  .page-scheduling__date-card {
+    grid-area: date-area;
+
+    .m-card__content {
+      display: grid;
+      grid-auto-flow: column;
+      gap: var(--space-lg);
+      justify-content: space-between;
+
+      .m-date-picker .react-date-picker .react-date-picker__wrapper {
+        width: 110px;
+      }
+
+      .m-time-picker .react-time-picker .react-time-picker__wrapper {
+        width: 110px;
+      }
+    }
+  }
+
+  .page-scheduling__post-text-card {
+    grid-area: text-area;
+  }
+
+  .page-scheduling__media-card {
+    grid-area: media-area;
+  }
+
+  .page-scheduling__preview-card {
+    display: none;
+
+    @media(min-width: $screen-lg) {
+      display: block;
+      grid-area: preview-area;
+    }
+  }
+
+  .page-scheduling__preview-button {
+    grid-area: button-area;
+    height: fit-content;
+
+    @media(min-width: $screen-lg) {
+      display: none;
+    }
+  }
+}
