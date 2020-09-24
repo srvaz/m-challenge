@@ -1,4 +1,21 @@
+@import './assets/scss/constants/screen';
+
 .App {
+  height: 100vh;
+  padding:
+    calc(80px + var(--space-md))
+    var(--space-lg)
+    var(--space-md);
+  position: relative;
+  width: 100vw;
+
+  @media (min-width: $screen-lg) {
+    padding:
+      calc(97px + (var(--space-sm) * 6))
+      var(--space-xl)
+      var(--space-xl);
+  }
+
   .App__app-bar {
     left: 0;
     position: absolute;
