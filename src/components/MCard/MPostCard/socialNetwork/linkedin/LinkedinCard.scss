@@ -1,0 +1,52 @@
+.m-card.m-card--linkedin {
+  width: 368px;
+
+  .m-card__title {
+    border-bottom: none;
+    padding: var(--space-md);
+
+    .m-card__linkedin-header {
+      align-items: center;
+      display: flex;
+
+      .m-card__logo {
+        border-radius: 50%;
+        height: var(--space-xl);
+        margin-right: var(--space-sm);
+        object-fit: cover;
+        width: var(--space-xl);
+      }
+    }
+  }
+
+  .m-card__content {
+    padding: 0;
+
+    .m-card__media-preview {
+      height: 368px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .m-card__footer {
+      padding-bottom: var(--space-sm);
+
+      .m-card__comments-count {
+        padding: 0 var(--space-md);
+      }
+
+      .m-card__footer-actions {
+        border-top: var(--border-default);
+        display: grid;
+        gap: var(--space-md);
+        grid-template-columns: repeat(2, auto) 1fr;
+        padding: var(--space-sm) var(--space-md) 0;
+
+        i.m-card__post-actions {
+          font-size: 16px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

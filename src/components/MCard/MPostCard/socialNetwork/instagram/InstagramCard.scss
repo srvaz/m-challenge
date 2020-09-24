@@ -1,0 +1,50 @@
+.m-card.m-card--instagram {
+  width: 368px;
+
+  .m-card__title {
+    border-bottom: none;
+    padding: var(--space-md);
+
+    .m-card__instagram-header {
+      align-items: center;
+      display: flex;
+
+      .m-card__logo {
+        border-radius: 50%;
+        height: var(--space-xl);
+        margin-right: var(--space-sm);
+        object-fit: cover;
+        width: var(--space-xl);
+      }
+    }
+  }
+
+  .m-card__content {
+    margin-top: var(--space-md);
+    padding: 0;
+
+    .m-card__media-preview {
+      height: 368px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .m-card__footer {
+      padding: var(--space-md);
+      padding-top: 0;
+
+      .m-card__footer-actions {
+        display: grid;
+        gap: var(--space-sm);
+        grid-template-columns: repeat(2, auto) 1fr;
+        margin-bottom: var(--space-sm);
+
+        i.m-card__post-actions {
+          font-size: 22px;
+          cursor: pointer;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
