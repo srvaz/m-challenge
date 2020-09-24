@@ -6,13 +6,13 @@ import React from 'react';
 import illustration from '../../assets/img/post_illustration.svg';
 import { useHistory } from "react-router-dom";
 
-export const Home = () => {
+const Home = () => {
   const history = useHistory();
 
   const handleClick = () => history.push('/scheduling');
 
   return (
-    <div className="page-home">
+    <section className="page-home">
       <img
         className="page-home__illustration"
         src={illustration}
@@ -25,6 +25,8 @@ export const Home = () => {
         >
           Agendar post
         </MButton>
-    </div>
+    </section>
   )
 };
+
+export default Home;

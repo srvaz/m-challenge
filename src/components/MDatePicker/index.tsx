@@ -18,6 +18,7 @@ export class MDatePicker extends Component<props> {
       <div className="m-date-picker">
         <DatePicker
           calendarIcon={<FontAwesomeIcon icon={faCalendarAlt} />}
+          format="dd/MM"
           value={value}
           onChange={onChange}
         />

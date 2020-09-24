@@ -1,51 +1,43 @@
 import './App.scss';
 
+import React, { Suspense, lazy } from 'react';
 import {
-  BrowserRouter,
   Route,
+  BrowserRouter as Router,
   Switch,
 } from 'react-router-dom';
 
-// import { DndProvider } from 'react-dnd'
-import { DropTargetMonitor } from 'react-dnd';
-// import { HTML5Backend } from 'react-dnd-html5-backend'
-import { Home } from './pages/Home';
 import { MAppBar } from './components/MAppBar';
-// import { MDragAndDrop } from './components/MDragAndDrop';
-import React from 'react';
+import { MText } from './components/MText';
 
 class App extends React.Component{
   state = {
     droppedFile: undefined,
   }
 
-  handleFileDrop = (_item: any, monitor: DropTargetMonitor) => {
-    const droppedFile = URL.createObjectURL(monitor.getItem().files[0]);
-    this.setState({ droppedFile });
-  }
-
   render() {
+    const Home = lazy(() => import('./pages/Home'));
+    const Scheduling = lazy(() => import('./pages/Scheduling'));
+
     return (
-      <BrowserRouter>
+      <Router>
         <div className="App">
           <MAppBar
             menuItems={[
               { label: 'Home', path: '/' },
-              { label: 'Agendar', path: '#' },
+              { label: 'Agendar', path: '/scheduling' },
               { label: 'Agendamentos', path: '#' },
             ]}
             className="App__app-bar"
           />
-
-          {/* <DndProvider backend={HTML5Backend}>
-            <MDragAndDrop onDrop={this.handleFileDrop} />
-          </DndProvider> */}
-
-          <Switch>
-            <Route path="/" component={Home} />
-          </Switch>
+          <Suspense fallback={<MText>Carregando...</MText>}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/scheduling" component={Scheduling} />
+            </Switch>
+          </Suspense>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
