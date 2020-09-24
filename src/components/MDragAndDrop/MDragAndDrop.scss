@@ -1,0 +1,21 @@
+.m-drag-and-drop {
+  align-items: center;
+  background-color: var(--color-contrast);
+  border-radius: var(--border-radius);
+  border: 1px dashed var(--color-black-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-md);
+  width: 100%;
+
+  .m-text {
+    color: #828282;
+  }
+
+  .m-drag-and-drop__icon {
+    color: #828282;
+    font-size: 32px;
+    margin-bottom: var(--space-st);
+  }
+}
