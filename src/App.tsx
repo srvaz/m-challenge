@@ -1,10 +1,17 @@
 import './App.scss';
 
-import { DndProvider } from 'react-dnd'
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+} from 'react-router-dom';
+
+// import { DndProvider } from 'react-dnd'
 import { DropTargetMonitor } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend'
+// import { HTML5Backend } from 'react-dnd-html5-backend'
+import { Home } from './pages/Home';
 import { MAppBar } from './components/MAppBar';
-import { MDragAndDrop } from './components/MDragAndDrop';
+// import { MDragAndDrop } from './components/MDragAndDrop';
 import React from 'react';
 
 class App extends React.Component{
@@ -19,20 +26,26 @@ class App extends React.Component{
 
   render() {
     return (
-      <div className="App">
-        <MAppBar
-          menuItems={[
-            { label: 'Home', path: '#' },
-            { label: 'Agendar', path: '#' },
-            { label: 'Agendamentos', path: '#' },
-          ]}
-          className="App__app-bar"
-        />
+      <BrowserRouter>
+        <div className="App">
+          <MAppBar
+            menuItems={[
+              { label: 'Home', path: '/' },
+              { label: 'Agendar', path: '#' },
+              { label: 'Agendamentos', path: '#' },
+            ]}
+            className="App__app-bar"
+          />
 
-        <DndProvider backend={HTML5Backend}>
-          <MDragAndDrop onDrop={this.handleFileDrop} />
-        </DndProvider>
-      </div>
+          {/* <DndProvider backend={HTML5Backend}>
+            <MDragAndDrop onDrop={this.handleFileDrop} />
+          </DndProvider> */}
+
+          <Switch>
+            <Route path="/" component={Home} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }

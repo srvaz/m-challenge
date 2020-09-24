@@ -1,21 +1,23 @@
-import './MLink.scss'
+import './MLink.scss';
 
 import React, { Component, HTMLAttributes } from 'react';
 
+import { Link } from 'react-router-dom';
+
 interface props {
-  to?: string;
+  to: string;
 }
 
 export class MLink extends Component<props & HTMLAttributes<HTMLAnchorElement>> {
   render() {
     const { children, to, className } = this.props;
     return (
-      <a
-        href={to}
+      <Link
+        to={to}
         className={`m-link ${className}`}
       >
         {children}
-      </a>
+      </Link>
     )
   }
 }
