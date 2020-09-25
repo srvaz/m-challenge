@@ -1,11 +1,11 @@
-import './index.scss';
-
 import * as serviceWorker from './serviceWorker';
 
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+
+import('./index.scss');
 
 if (process.env.NODE_ENV === 'production') {
   disableReactDevTools();

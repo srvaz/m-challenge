@@ -33,6 +33,7 @@ export class MButton extends Component<props & HTMLAttributes<HTMLButtonElement>
           variant && `${this.baseClassName}--${variant}`,
           icon && `${this.baseClassName}--icon`,
         )}
+        aria-label={children?.toString()}
         onClick={onClick}
       >
         {
