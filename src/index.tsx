@@ -4,6 +4,10 @@ import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+library.add(fab);
 
 import('./index.scss');
 

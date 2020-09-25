@@ -20,8 +20,15 @@
     grid-template-columns: repeat(2, 1fr) 2fr;
   }
 
-  .page-scheduling__social-network-card {
+  .page-scheduling__social-card {
     grid-area: social-area;
+
+    .m-card__content {
+      display: grid;
+      gap: var(--space-md);
+      grid-auto-flow: column;
+      justify-content: center;
+    }
   }
 
   .page-scheduling__date-card {
