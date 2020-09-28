@@ -1,11 +1,14 @@
 import './Scheduling.scss';
 
+import * as SocialNetworkActions from '../../store/socialNetworks/actions';
+
 import { BUTTON_VARIANTS, MButton } from '../../components/MButton';
+import { Dispatch, bindActionCreators } from '@reduxjs/toolkit';
 import { MCard, MPostCard } from '../../components/MCard';
 import { MText, TEXT_VARIANT } from '../../components/MText';
 import React, { Component } from 'react';
-import { SOCIAL_NETWORK_STATUS, SocialNetwork } from '../../models/SocialNetwork.model';
 
+import { ApplicationState } from '../../store';
 import { DndProvider } from 'react-dnd'
 import { DropTargetMonitor } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend'
@@ -14,31 +17,28 @@ import { MDatePicker } from '../../components/MDatePicker';
 import { MDragAndDrop } from '../../components/MDragAndDrop';
 import { MTextArea } from '../../components/MTextArea';
 import { MTimePicker } from '../../components/MTimePicker';
+import { SOCIAL_NETWORK_STATUS } from '../../models/SocialNetwork.model';
+import { SocialNetwork } from '../../store/socialNetworks/types';
+import { connect } from 'react-redux';
 
 interface state {
   datePost: Date,
-  socialNetworkList: SocialNetwork[],
-  selectedSocialNetwork?: SocialNetwork[],
+  selectedSocialNetwork: number[],
   postData?: any,
 }
-export default class Scheduling extends Component {
+
+interface StateProps {
+  socialNetworks: SocialNetwork[],
+}
+
+interface DispatchProps {
+  loadSocialNetwork(): any,
+}
+
+class Scheduling extends Component<StateProps & DispatchProps> {
   state: state = {
     datePost: new Date(),
-    socialNetworkList: [],
-    selectedSocialNetwork: [
-      {
-        id: 3,
-        name: 'Instagram',
-        icon: 'instagram',
-        status: SOCIAL_NETWORK_STATUS.ENABLED
-      },
-      {
-        id: 2,
-        name: 'Linkedin',
-        icon: 'linkedin-in',
-        status: SOCIAL_NETWORK_STATUS.ENABLED
-      }
-    ],
+    selectedSocialNetwork: [],
     postData: [
       {
         image: 'https://picsum.photos/368',
@@ -49,47 +49,8 @@ export default class Scheduling extends Component {
   };
 
   componentDidMount() {
-    const socialNetworkList: SocialNetwork[] = [];
-    socialNetworkList.push(
-      new SocialNetwork({
-        id: 1,
-        name: 'Facebook',
-        icon: 'facebook-f',
-        status: SOCIAL_NETWORK_STATUS.DISABLED
-      }),
-      new SocialNetwork({
-        id: 2,
-        name: 'Linkedin',
-        icon: 'linkedin-in',
-        status: SOCIAL_NETWORK_STATUS.ENABLED
-      }),
-      new SocialNetwork({
-        id: 3,
-        name: 'Instagram',
-        icon: 'instagram',
-        status: SOCIAL_NETWORK_STATUS.ENABLED
-      }),
-      new SocialNetwork({
-        id: 4,
-        name: 'YouTube',
-        icon: 'youtube',
-        status: SOCIAL_NETWORK_STATUS.DISABLED
-      }),
-      new SocialNetwork({
-        id: 5,
-        name: 'Pinteres',
-        icon: 'pinterest-p',
-        status: SOCIAL_NETWORK_STATUS.DISABLED
-      }),
-      new SocialNetwork({
-        id: 6,
-        name: 'Twitter',
-        icon: 'twitter',
-        status: SOCIAL_NETWORK_STATUS.DISABLED
-      })
-    )
-
-    this.setState({ socialNetworkList })
+    const { loadSocialNetwork } = this.props;
+    loadSocialNetwork();
   }
 
   handleFileDrop = (_item: any, monitor: DropTargetMonitor) => {
@@ -99,8 +60,24 @@ export default class Scheduling extends Component {
 
   onChangeDate = (datePost: Date) => this.setState({ datePost });
 
+  onChangeCheckbox = (e: any) => {
+    const target = e.target;
+    const selectedSocialNetwork = this.state.selectedSocialNetwork;
+
+    if (target.checked) {
+      selectedSocialNetwork?.push(target.value);
+    } else {
+      selectedSocialNetwork.map((item, i) => {
+        if (item === target.value) selectedSocialNetwork.splice(i, 1);
+      });
+    }
+
+    this.setState({ selectedSocialNetwork });
+  }
+
   render() {
-    const { datePost, socialNetworkList, selectedSocialNetwork, postData } = this.state;
+    const { datePost, selectedSocialNetwork, postData } = this.state;
+    const { socialNetworks } = this.props;
     return (
       <section className="page-scheduling">
         <MCard
@@ -108,11 +85,13 @@ export default class Scheduling extends Component {
           title={<MText variant={TEXT_VARIANT.TITLE}>Redes Sociais</MText>}
         >
           {
-            socialNetworkList.map((socialNetwork, i) =>
+            socialNetworks.map((socialNetwork, i) =>
               <MCheckbox
                 key={i}
                 icon={socialNetwork.icon}
+                value={socialNetwork.id}
                 disabled={socialNetwork.status === SOCIAL_NETWORK_STATUS.DISABLED}
+                onChange={this.onChangeCheckbox}
               />
             )
           }
@@ -169,3 +148,13 @@ export default class Scheduling extends Component {
     )
   }
 }
+
+const mapStateToProps = (state: ApplicationState) => ({
+  socialNetworks: state.socialNetworks.data
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(SocialNetworkActions, dispatch);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Scheduling);

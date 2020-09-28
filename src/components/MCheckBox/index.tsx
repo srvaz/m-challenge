@@ -1,6 +1,6 @@
 import './MCheckBox.scss';
 
-import React, { Component } from 'react';
+import React, { ChangeEvent, Component } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconName } from '@fortawesome/fontawesome-svg-core';
@@ -10,7 +10,7 @@ interface props {
   icon: IconName
   disabled?: boolean,
   value?: any,
-  onChange?: (e: any) => void
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 export class MCheckbox extends Component<props> {
@@ -22,13 +22,8 @@ export class MCheckbox extends Component<props> {
     this.setState({ isChecked: !this.state.isChecked});
   }
 
-  // handleChange = () => ({
-  //   value: this.props.value,
-  //   checked: this.state.isChecked,
-  // })
-
   render() {
-    const { icon, disabled, onChange } = this.props;
+    const { icon, disabled, value, onChange } = this.props;
     const { isChecked } = this.state;
     return (
       <div className={getClassList(
@@ -38,6 +33,8 @@ export class MCheckbox extends Component<props> {
       )}>
         <input
           type="checkbox"
+          checked={isChecked}
+          value={value}
           onClick={this.handleCheck}
           onChange={onChange}
         />
