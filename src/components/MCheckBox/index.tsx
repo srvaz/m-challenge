@@ -35,6 +35,7 @@ export class MCheckbox extends Component<props> {
           type="checkbox"
           checked={isChecked}
           value={value}
+          disabled={disabled}
           onClick={this.handleCheck}
           onChange={onChange}
         />

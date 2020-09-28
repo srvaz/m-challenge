@@ -15,7 +15,7 @@ export default class LinkedinCard extends Component<PostCardProps> {
     return (
       <div>
         <div className="m-card__linkedin-header" style={{marginBottom: 16}}>
-          <img src={socialNetwork.icon} alt="linkedin logo" className="m-card__logo"/>
+          <FontAwesomeIcon className="m-card__logo" icon={['fab', socialNetwork.icon]} />
           <div>
             <MText variant={TEXT_VARIANT.TITLE}>
               {userName}
@@ -33,12 +33,18 @@ export default class LinkedinCard extends Component<PostCardProps> {
   }
 
   render() {
+    const { media } = this.props;
+
     return (
       <MCard
         className="m-card--linkedin"
         title={this.renderCardHeader()}
       >
-        <img src="https://picsum.photos/368" alt="media preview" className="m-card__media-preview"/>
+        {
+          media
+            ? <img src={media} alt="media preview" className="m-card__media-preview"/>
+            : <div className="m-card__media-preview" />
+        }
         <div className="m-card__footer">
             <MText
               className="m-card__comments-count"

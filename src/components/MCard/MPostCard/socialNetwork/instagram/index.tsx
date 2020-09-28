@@ -14,22 +14,26 @@ export default class InstagramCard extends Component<PostCardProps> {
 
     return (
       <div className="m-card__instagram-header">
-        <img src={socialNetwork.icon} alt="Instagram logo" className="m-card__logo"/>
+        <FontAwesomeIcon className="m-card__logo" icon={['fab', socialNetwork.icon]} />
         <MText variant={TEXT_VARIANT.TITLE}>
-          {userName}
+          {userName} teste
         </MText>
       </div>
     );
   }
 
   render() {
-    const { description } = this.props;
+    const { description, media } = this.props;
     return (
       <MCard
         className="m-card--instagram"
         title={this.renderCardHeader()}
       >
-        <img src="https://picsum.photos/368" alt="media preview" className="m-card__media-preview"/>
+        {
+          media
+            ? <img src={media} alt="media preview" className="m-card__media-preview"/>
+            : <div className="m-card__media-preview" />
+        }
         <div className="m-card__footer">
           <div className="m-card__footer-actions">
             <i className="m-card__post-actions">

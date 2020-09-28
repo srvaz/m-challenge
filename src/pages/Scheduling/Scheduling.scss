@@ -18,6 +18,7 @@
       'text-area text-area preview-area'
       'media-area media-area preview-area';
     grid-template-columns: repeat(2, minmax(280px, 1fr)) minmax(300px, 2fr);
+    padding-bottom: 60px;
   }
 
   .page-scheduling__social-card {
@@ -85,6 +86,37 @@
 
     @media(min-width: $screen-lg) {
       display: none;
+    }
+  }
+
+  .page-scheduling__action-bar {
+    background-color: var(--color-contrast);
+    bottom: 0;
+    display: grid;
+    gap: var(--space-md);
+    grid-auto-flow: column;
+    justify-content: end;
+    left: 0;
+    padding: var(--space-sm) var(--space-xl);
+    position: fixed;
+    width: 100%;
+  }
+
+  .page-scheduling__modal {
+    align-items: center;
+    background-color: var(--color-contrast);
+    border-radius: var(--border-radius);
+    border: var(--border-default);
+    display: flex;
+    gap: var(--space-md);
+    height: 420px;
+    justify-content: center;
+    position: fixed;
+    width: 350px;
+
+    @media(min-width: $screen-lg) {
+      height: 420px;
+      width: 800px;
     }
   }
 }
