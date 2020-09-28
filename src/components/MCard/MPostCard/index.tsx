@@ -5,7 +5,7 @@ import { PostCardProps } from '../../../models/PostCardProps.model';
 export class MPostCard extends Component<PostCardProps> {
   private getCardLayout = () => {
     const { socialNetwork } = this.props;
-    let CardLayout;
+    let CardLayout: any;
 
     switch(socialNetwork.name) {
       case 'Instagram':

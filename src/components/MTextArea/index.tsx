@@ -2,13 +2,13 @@ import './MTextArea.scss';
 import 'emoji-mart/css/emoji-mart.css'
 
 import { EmojiData, Picker } from 'emoji-mart'
-import React, { ChangeEvent, Component, HTMLAttributes } from 'react';
+import React, { ChangeEvent, Component, TextareaHTMLAttributes } from 'react';
 
 import { MButton } from '../MButton';
 import { faLaugh } from '@fortawesome/free-solid-svg-icons';
 import { getClassList } from '../../assets/ts/utils';
 
-export class MTextArea extends Component<HTMLAttributes<HTMLTextAreaElement>> {
+export class MTextArea extends Component<TextareaHTMLAttributes<HTMLTextAreaElement>> {
   state = {
     isFocused: false,
     emojiMartIsOpen: false,
@@ -25,7 +25,12 @@ export class MTextArea extends Component<HTMLAttributes<HTMLTextAreaElement>> {
     textAreaPointerPosition: e.target.selectionEnd,
   });
 
-  handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => this.setState({ textAreaValue: e.target.value });
+  handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    this.setState({ textAreaValue: e.target.value });
+
+    const { onChange } = this.props;
+    if (onChange) onChange(e);
+  }
 
   handleEmojiClick = () => this.setState({ emojiMartIsOpen: !this.state.emojiMartIsOpen });
 

@@ -14,10 +14,11 @@ $SECONDARY_VARIANTS: (
   'secondary-light': lighten(rgb(242, 153, 74), 8),
   'secondary-light-transparent': rgba(242, 153, 74, 0.14),
   'secondary-dark-transparent': rgba(242, 153, 74, 0.3),
+  'secondary-gradient': linear-gradient(135deg, #EF9F2E 25%, #E02B4B 105.56%),
 );
 
 $BASE_COLORS: (
-  'base': rgb(229, 229, 229),
+  'base': rgb(230, 230, 230),
   'contrast': rgb(255, 255, 255),
   );
 

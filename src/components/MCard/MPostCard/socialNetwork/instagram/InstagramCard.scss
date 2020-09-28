@@ -24,6 +24,8 @@
     padding: 0;
 
     .m-card__media-preview {
+      background-color: var(--color-base);
+      display: block;
       height: 368px;
       object-fit: cover;
       width: 100%;

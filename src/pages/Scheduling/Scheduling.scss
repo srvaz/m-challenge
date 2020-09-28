@@ -17,11 +17,19 @@
       'social-area date-area preview-area'
       'text-area text-area preview-area'
       'media-area media-area preview-area';
-    grid-template-columns: repeat(2, 1fr) 2fr;
+    grid-template-columns: repeat(2, minmax(280px, 1fr)) minmax(300px, 2fr);
+    padding-bottom: 60px;
   }
 
-  .page-scheduling__social-network-card {
+  .page-scheduling__social-card {
     grid-area: social-area;
+
+    .m-card__content {
+      display: grid;
+      gap: var(--space-md);
+      grid-auto-flow: column;
+      justify-content: center;
+    }
   }
 
   .page-scheduling__date-card {
@@ -57,6 +65,18 @@
     @media(min-width: $screen-lg) {
       display: block;
       grid-area: preview-area;
+
+      .page-scheduling__preview-container {
+        align-items: center;
+        display: flex;
+        height: calc(100% - (var(--space-st) * 2));
+        max-width: 100%;
+        overflow-x: auto;
+
+        .page-scheduling__preview-post {
+          margin-right: var(--space-lg);
+        }
+      }
     }
   }
 
@@ -66,6 +86,37 @@
 
     @media(min-width: $screen-lg) {
       display: none;
+    }
+  }
+
+  .page-scheduling__action-bar {
+    background-color: var(--color-contrast);
+    bottom: 0;
+    display: grid;
+    gap: var(--space-md);
+    grid-auto-flow: column;
+    justify-content: end;
+    left: 0;
+    padding: var(--space-sm) var(--space-xl);
+    position: fixed;
+    width: 100%;
+  }
+
+  .page-scheduling__modal {
+    align-items: center;
+    background-color: var(--color-contrast);
+    border-radius: var(--border-radius);
+    border: var(--border-default);
+    display: flex;
+    gap: var(--space-md);
+    height: 420px;
+    justify-content: center;
+    position: fixed;
+    width: 350px;
+
+    @media(min-width: $screen-lg) {
+      height: 420px;
+      width: 800px;
     }
   }
 }
