@@ -1,6 +1,7 @@
 import './Scheduling.scss';
 
 import { BUTTON_VARIANTS, MButton } from '../../components/MButton';
+import { MCard, MPostCard } from '../../components/MCard';
 import { MText, TEXT_VARIANT } from '../../components/MText';
 import React, { Component } from 'react';
 import { SOCIAL_NETWORK_STATUS, SocialNetwork } from '../../models/SocialNetwork.model';
@@ -8,7 +9,6 @@ import { SOCIAL_NETWORK_STATUS, SocialNetwork } from '../../models/SocialNetwork
 import { DndProvider } from 'react-dnd'
 import { DropTargetMonitor } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import { MCard } from '../../components/MCard';
 import { MCheckbox } from '../../components/MCheckBox';
 import { MDatePicker } from '../../components/MDatePicker';
 import { MDragAndDrop } from '../../components/MDragAndDrop';
@@ -18,11 +18,34 @@ import { MTimePicker } from '../../components/MTimePicker';
 interface state {
   datePost: Date,
   socialNetworkList: SocialNetwork[],
+  selectedSocialNetwork?: SocialNetwork[],
+  postData?: any,
 }
 export default class Scheduling extends Component {
   state: state = {
     datePost: new Date(),
     socialNetworkList: [],
+    selectedSocialNetwork: [
+      {
+        id: 3,
+        name: 'Instagram',
+        icon: 'instagram',
+        status: SOCIAL_NETWORK_STATUS.ENABLED
+      },
+      {
+        id: 2,
+        name: 'Linkedin',
+        icon: 'linkedin-in',
+        status: SOCIAL_NETWORK_STATUS.ENABLED
+      }
+    ],
+    postData: [
+      {
+        image: 'https://picsum.photos/368',
+        userName: 'João Pedro',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing.',
+      },
+    ],
   };
 
   componentDidMount() {
@@ -74,8 +97,10 @@ export default class Scheduling extends Component {
     this.setState({ droppedFile });
   }
 
+  onChangeDate = (datePost: Date) => this.setState({ datePost });
+
   render() {
-    const { datePost, socialNetworkList } = this.state;
+    const { datePost, socialNetworkList, selectedSocialNetwork, postData } = this.state;
     return (
       <section className="page-scheduling">
         <MCard
@@ -97,14 +122,23 @@ export default class Scheduling extends Component {
           className="page-scheduling__date-card"
           title={<MText variant={TEXT_VARIANT.TITLE}>Data de publicação</MText>}
         >
-          <MDatePicker value={datePost} />
-          <MTimePicker value={datePost} />
+          <MDatePicker value={datePost} onChange={this.onChangeDate} />
+          <MTimePicker value={datePost} onChange={this.onChangeDate} />
         </MCard>
 
         <MCard
           className="page-scheduling__preview-card"
           title={<MText variant={TEXT_VARIANT.TITLE}>Visualização do post</MText>}
         >
+          <div className="page-scheduling__preview-container">
+            {
+              selectedSocialNetwork?.map((item, i) => (
+                <div key={i} className="page-scheduling__preview-post">
+                  <MPostCard {...postData} socialNetwork={item} />
+                </div>
+              ))
+            }
+          </div>
         </MCard>
 
         <MCard

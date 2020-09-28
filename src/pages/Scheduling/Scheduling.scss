@@ -17,7 +17,7 @@
       'social-area date-area preview-area'
       'text-area text-area preview-area'
       'media-area media-area preview-area';
-    grid-template-columns: repeat(2, 1fr) 2fr;
+    grid-template-columns: repeat(2, minmax(280px, 1fr)) minmax(300px, 2fr);
   }
 
   .page-scheduling__social-card {
@@ -64,6 +64,18 @@
     @media(min-width: $screen-lg) {
       display: block;
       grid-area: preview-area;
+
+      .page-scheduling__preview-container {
+        align-items: center;
+        display: flex;
+        height: calc(100% - (var(--space-st) * 2));
+        max-width: 100%;
+        overflow-x: auto;
+
+        .page-scheduling__preview-post {
+          margin-right: var(--space-lg);
+        }
+      }
     }
   }
 
