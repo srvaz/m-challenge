@@ -64,7 +64,7 @@ export class MTextArea extends Component<TextareaHTMLAttributes<HTMLTextAreaElem
           onBlur={this.handleBlur}
         />
 
-        <MButton icon={faLaugh} onClick={this.handleEmojiClick} />
+        <MButton icon={faLaugh} onClick={this.handleEmojiClick} aria-label="emoji picker" />
 
         <Picker
           style={this.getEmojiMartStyles()}

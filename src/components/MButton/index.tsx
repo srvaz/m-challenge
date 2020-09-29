@@ -24,7 +24,7 @@ export class MButton extends Component<props & HTMLAttributes<HTMLButtonElement>
   baseClassName = 'm-button';
 
   render() {
-    const { variant, icon, children, onClick, className, disabled } = this.props;
+    const { variant, icon, children, onClick, className, disabled, "aria-label": ariaLabel } = this.props;
 
     return (
       <button
@@ -35,7 +35,7 @@ export class MButton extends Component<props & HTMLAttributes<HTMLButtonElement>
           icon && `${this.baseClassName}--icon`,
           disabled && `${this.baseClassName}--disabled`,
         )}
-        aria-label={children?.toString()}
+        aria-label={ariaLabel || children?.toString()}
         onClick={onClick}
       >
         {

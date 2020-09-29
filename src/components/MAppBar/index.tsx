@@ -39,7 +39,7 @@ export class MAppBar extends Component<props & HTMLAttributes<HTMLDivElement>> {
             : null
         }
 
-        <MButton icon={faBars} className="m-app-bar__menu-trigger" onClick={this.handleMenuClick} />
+        <MButton icon={faBars} className="m-app-bar__menu-trigger" onClick={this.handleMenuClick} aria-label="menu button" />
 
         <img src={logoImg} alt="mLabs logo" className="m-app-bar__logo"/>
 
