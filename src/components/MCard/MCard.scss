@@ -9,7 +9,7 @@
   }
 
   .m-card__content {
-    height: 100%;
+    height: calc(100% - (var(--space-st) * 2));
     padding: var(--space-st);
   }
 }

@@ -18,6 +18,7 @@ class App extends React.Component{
     import('./App.scss');
     const Home = lazy(() => import('./pages/Home'));
     const Scheduling = lazy(() => import('./pages/Scheduling'));
+    const ScheduleList = lazy(() => import('./pages/ScheduleList'));
 
 
     return (
@@ -27,7 +28,7 @@ class App extends React.Component{
             menuItems={[
               { label: 'Home', path: '/' },
               { label: 'Agendar', path: '/scheduling' },
-              { label: 'Agendamentos', path: '#' },
+              { label: 'Agendamentos', path: '/schedule-list' },
             ]}
             className="App__app-bar"
           />
@@ -36,6 +37,7 @@ class App extends React.Component{
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/scheduling" component={Scheduling} />
+                <Route path="/schedule-list" component={ScheduleList} />
               </Switch>
             </Provider>
           </Suspense>
