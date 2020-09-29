@@ -1,0 +1,56 @@
+@import '../../assets/scss/constants/screen';
+
+.page-schedule-list {
+    overflow: auto;
+    max-width: 100%;
+    position: relative;
+
+  .page-schedule-list__img {
+    height: 50px;
+    object-fit: cover;
+    width: 50px;
+  }
+
+  .page-schedule-list__icon {
+    align-items: center;
+    border-radius: 50%;
+    color: var(--color-contrast);
+    display: flex;
+    font-size: 16px;
+    height: var(--space-lg);
+    justify-content: center;
+    width: var(--space-lg);
+
+    &.page-schedule-list__icon--instagram {
+      background-color: #D60F86;
+    }
+
+    &.page-schedule-list__icon--linkedin-in {
+      background-color: #3A70DA;
+    }
+  }
+
+  .page-schedule-list__preview-overlay {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    .page-schedule-list__preview-card {
+      box-shadow: 0 0 4px 2px var(--color-black-shadow);
+      width: 480px;
+
+      .page-schedule-list__preview-container {
+        display: grid;
+        gap: 24px;
+        grid-auto-flow: column;
+        max-width: 100%;
+        overflow-x: auto;
+      }
+    }
+  }
+}

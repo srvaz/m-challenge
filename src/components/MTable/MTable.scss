@@ -1,0 +1,18 @@
+.m-table {
+  background-color: var(--color-contrast);
+  border: var(--border-default);
+  border-spacing: 0;
+  box-shadow: 0 0 4px var(--color-black-shadow);
+  min-width: 100%;
+
+  th, td {
+    border-right: var(--border-default);
+    border-bottom: var(--border-default);
+    // min-width: 100px;
+    padding: var(--space-sm) var(--space-st);
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}

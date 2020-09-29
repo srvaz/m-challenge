@@ -17,6 +17,7 @@ import { MDatePicker } from '../../components/MDatePicker';
 import { MDragAndDrop } from '../../components/MDragAndDrop';
 import { MTextArea } from '../../components/MTextArea';
 import { MTimePicker } from '../../components/MTimePicker';
+import { Redirect } from 'react-router-dom';
 import { SOCIAL_NETWORK_STATUS } from '../../models/SocialNetwork.model';
 import { SocialNetwork } from '../../store/socialNetworks/types';
 import api from '../../services/api';
@@ -31,6 +32,8 @@ interface state {
   postImage: string,
   description: string,
   modalIsOpen: boolean,
+  redirect: boolean,
+  actionIsActivated: boolean,
 }
 
 interface StateProps {
@@ -49,6 +52,8 @@ class Scheduling extends Component<StateProps & DispatchProps> {
     userName: 'João Pedro',
     description: '',
     modalIsOpen: false,
+    redirect: false,
+    actionIsActivated: false,
   };
 
   componentDidMount() {
@@ -81,7 +86,10 @@ class Scheduling extends Component<StateProps & DispatchProps> {
       });
     }
 
-    this.setState({ selectedSocialNetwork });
+    this.setState({
+      selectedSocialNetwork,
+      actionIsActivated: !!this.state.selectedSocialNetwork.length
+    });
   }
 
   savePost = () => {
@@ -107,6 +115,8 @@ class Scheduling extends Component<StateProps & DispatchProps> {
   handleModalState = () =>
     this.setState({ modalIsOpen: !this.state.modalIsOpen });
 
+  confirmModal = () => this.setState({ redirect: true });
+
   render() {
     const {
       datePost,
@@ -115,8 +125,14 @@ class Scheduling extends Component<StateProps & DispatchProps> {
       description,
       postImage,
       modalIsOpen,
+      redirect,
+      actionIsActivated,
     } = this.state;
     const { socialNetworks } = this.props;
+
+    if (redirect) {
+      return <Redirect to="/schedule-list" />
+    }
     return (
       <section className="page-scheduling">
         <MCard
@@ -193,7 +209,7 @@ class Scheduling extends Component<StateProps & DispatchProps> {
         <div className="page-scheduling__action-bar">
           <MButton>Cancelar</MButton>
           <MButton variant={BUTTON_VARIANTS.OUTLINED}>Salvar Rascunho</MButton>
-          <MButton variant={BUTTON_VARIANTS.PRIMARY} onClick={this.savePost}>Agendar</MButton>
+          <MButton variant={BUTTON_VARIANTS.PRIMARY} onClick={this.savePost} disabled={!actionIsActivated}>Agendar</MButton>
         </div>
 
         {
@@ -207,7 +223,7 @@ class Scheduling extends Component<StateProps & DispatchProps> {
                     </MText>
                     <MButton
                       variant={BUTTON_VARIANTS.PRIMARY}
-                      onClick={this.handleModalState}
+                      onClick={this.confirmModal}
                     >
                       OK
                     </MButton>

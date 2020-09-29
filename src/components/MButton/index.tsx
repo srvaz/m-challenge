@@ -17,13 +17,14 @@ export enum BUTTON_VARIANTS {
 interface props {
   variant?: BUTTON_VARIANTS | null,
   icon?: IconProp,
+  disabled?: boolean,
 }
 
 export class MButton extends Component<props & HTMLAttributes<HTMLButtonElement>> {
   baseClassName = 'm-button';
 
   render() {
-    const { variant, icon, children, onClick, className } = this.props;
+    const { variant, icon, children, onClick, className, disabled } = this.props;
 
     return (
       <button
@@ -32,6 +33,7 @@ export class MButton extends Component<props & HTMLAttributes<HTMLButtonElement>
           this.baseClassName,
           variant && `${this.baseClassName}--${variant}`,
           icon && `${this.baseClassName}--icon`,
+          disabled && `${this.baseClassName}--disabled`,
         )}
         aria-label={children?.toString()}
         onClick={onClick}
